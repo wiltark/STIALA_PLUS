@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "aoi.js": "^6.0.3",
-    "path": "^0.12.7"
+    "@akarui/aoi.panel": "^0.0.2",
+    "aoi.js": "^6.0.3"
   }
 }

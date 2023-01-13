@@ -1,14 +1,28 @@
-const token = require("./config.json");
-const aoijs = require("aoi.js")
+const conf = require("./config.json");
+const { Panel } = require("@akarui/aoi.panel")
+const aoijs = require("aoi.js");
 
 const bot = new aoijs.AoiClient({
-token: token.token,
+token: conf.token,
 prefix: "$",
 intents: ["MessageContent", "Guilds", "GuildMessages"]
 })
 
-//Events
+const panel = new Panel({
+    username: conf.userr,
+    password: conf.password,
+    secret: "aoijs",
+    port: 3000,
+    bot: bot,
+    mainFile: "./index.js",
+    commands: "./commands"
+})
+panel.loadPanel()
+
+panel.onError()
+
+
 bot.onMessage()
 
 const loader = new aoijs.LoadCommands(bot)
-loader.load(bot.cmd,"./aoijs/commands/")
+loader.load(bot.cmd,"./commands/")
